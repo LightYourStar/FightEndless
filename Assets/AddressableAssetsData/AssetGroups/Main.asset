@@ -17,8 +17,18 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 6882b09b37de3bb43a20802e5318034a
   m_SerializeEntries:
+  - m_GUID: 99c9720ab356a0642a771bea13969a05
+    m_Address: Assets/Scenes/MainScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a407a47da6b5b384b83b6c738888c111
     m_Address: PrefabsN/KeepNode.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d6a00980a7e7e634eb865e375f2adb1a
+    m_Address: Assets/Scenes/LogoScene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
