@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace LD
 {
@@ -83,33 +82,6 @@ namespace LD
 
         private void CreateTouchMask()
         {
-            // if (!m_UiInfo.NoTouchMask && !m_Inited)
-            // {
-            //     GameObject touchMask = Global.gApp.gResMgr.InstantiateLoadObj(LDUICfg.TouchMaskUi, ResSceneType.Resident);
-            //     Canvas[] canvas = gameObject.GetComponentsInChildren<Canvas>();
-            //     if (canvas.Length > 0)
-            //     {
-            //         Canvas minOrderCanvas = canvas[0];
-            //         foreach (Canvas mCanvas in canvas)
-            //         {
-            //             if (mCanvas.sortingOrder < minOrderCanvas.sortingOrder)
-            //             {
-            //                 minOrderCanvas = mCanvas;
-            //             }
-            //         }
-            //
-            //         touchMask.transform.SetParent(minOrderCanvas.transform, false);
-            //     }
-            //
-            //     touchMask.transform.SetAsFirstSibling();
-            //     m_TouchMask = touchMask.GetComponent<TouchMask>();
-            //     m_TouchMask.SetMaskEnable(m_UiInfo.MaskBlack);
-            //
-            //     if (m_UiInfo.TouchEmptyClose)
-            //     {
-            //         m_TouchMask.AddCloseListener(m_UIName, m_UiInfo.TouchEmptyCloseDelayTime, this);
-            //     }
-            // }
         }
 
 
@@ -118,10 +90,10 @@ namespace LD
             RemoveMsgListener();
             RemoveTouchMask();
             RemoveTimeTouchMask();
-            // if (!LDUICfg.IgnoreCloseBroadcastUIs.Contains(GetName()))
-            // {
-            //     Global.gApp.gMsgDispatcher.Broadcast<string>(MsgIds.OnCloseUI, m_UIName);
-            // }
+            if (!LDUICfg.IgnoreCloseBroadcastUIs.Contains(GetName()))
+            {
+                Global.gApp.gMsgDispatcher.Broadcast<string>(MsgIds.OnCloseUI, m_UIName);
+            }
             OnCloseImp();
         }
 
@@ -193,11 +165,10 @@ namespace LD
 
         protected void RegEvent(bool addListener)
         {
-            // Global.gApp.gMsgDispatcher.RegEvent(MsgIds.Language, ChangeLanguage, addListener);
-            // if (m_UiInfo.OnUICloseListener != null)
-            // {
-            //     Global.gApp.gMsgDispatcher.RegEvent<string>(MsgIds.OnCloseUI, OnCloseOtherUI, addListener);
-            // }
+            if (m_UiInfo.OnUICloseListener != null)
+            {
+                Global.gApp.gMsgDispatcher.RegEvent<string>(MsgIds.OnCloseUI, OnCloseOtherUI, addListener);
+            }
 
             RegEventImp(addListener);
         }
@@ -219,7 +190,7 @@ namespace LD
             if (m_TouchMaskFlag)
             {
                 m_TouchMaskFlag = false;
-                // Global.gApp.gGameCtrl.RemoveGlobalTouchMask();
+                Global.gApp.gGameCtrl.RemoveGlobalTouchMask();
             }
         }
 
@@ -228,7 +199,7 @@ namespace LD
             if (!m_TouchMaskFlag)
             {
                 m_TouchMaskFlag = true;
-                // Global.gApp.gGameCtrl.AddGlobalTouchMask();
+                Global.gApp.gGameCtrl.AddGlobalTouchMask();
             }
         }
 

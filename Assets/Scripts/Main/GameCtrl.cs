@@ -132,6 +132,16 @@ namespace LD
             FrameDtTime = 1.0f / targetFrame;
         }
 
+        public void AddGlobalTouchMask()
+        {
+            //#todo
+        }
+
+        public void RemoveGlobalTouchMask()
+        {
+            //#todo
+        }
+
         #endregion
     }
 }
