@@ -1,0 +1,18 @@
+{
+    "name": "GPUSkine.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7be06833dc873354f882824755393607"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
