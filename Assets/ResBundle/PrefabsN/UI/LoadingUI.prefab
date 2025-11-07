@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1340164937834747960}
-  - component: {fileID: -8115563286853434291}
   m_Layer: 0
   m_Name: LoadingUI
   m_TagString: Untagged
@@ -37,44 +36,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &-8115563286853434291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1008862499697080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52a8c604ebf7d424a80d35af879a8db3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Default:
-    m_GameObject: {fileID: 6606105650414146482}
-    m_rectTransform: {fileID: 6940482711267232066}
-  m_maskBg:
-    m_GameObject: {fileID: 1615419767548552505}
-    m_rectTransform: {fileID: 50239311772424543}
-    m_image: {fileID: 5377976689909518210}
-  m_maskBg1:
-    m_GameObject: {fileID: 2112308277694959916}
-    m_rectTransform: {fileID: 9151941758254976618}
-    m_image: {fileID: 6127237862156976074}
-  m_txt_Tips:
-    m_GameObject: {fileID: 1375041333608919005}
-    m_rectTransform: {fileID: 3889440676327093948}
-    m_text: {fileID: 7547560157623419332}
-  m_Progress:
-    m_GameObject: {fileID: 8904691187564626255}
-    m_rectTransform: {fileID: 1095659659751439671}
-  m_ProgressBarValue:
-    m_GameObject: {fileID: 5565724767229167213}
-    m_rectTransform: {fileID: 4833859301601912256}
-    m_image: {fileID: 8355893624628854369}
-  m_txt_Progress:
-    m_GameObject: {fileID: 5170087667249870299}
-    m_rectTransform: {fileID: 1404145516403930576}
-    m_text: {fileID: 3689943457881058181}
 --- !u!1 &1375041333608919005
 GameObject:
   m_ObjectHideFlags: 0
