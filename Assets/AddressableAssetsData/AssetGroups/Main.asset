@@ -17,8 +17,23 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 6882b09b37de3bb43a20802e5318034a
   m_SerializeEntries:
+  - m_GUID: 097a3fcc73d27b64bbab86ce30ff975a
+    m_Address: Scene/LoadingScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 121614c557728904d8f3838db008aee5
+    m_Address: PrefabsN/UI/Resident
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 99c9720ab356a0642a771bea13969a05
-    m_Address: Assets/Scenes/MainScene.unity
+    m_Address: Scene/MainScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a386f63d325a8874faf929f6b4d249c0
+    m_Address: Font/NotoSansSC-Medium.ttf
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -28,7 +43,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d6a00980a7e7e634eb865e375f2adb1a
-    m_Address: Assets/Scenes/LogoScene.unity
+    m_Address: Scene/LogoScene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

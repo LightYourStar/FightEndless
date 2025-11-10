@@ -2,7 +2,7 @@
 
 namespace LD
 {
-    public partial class LDUiMgr
+    public partial class LDUIMgr
     {
         private List<PerformanceTaskBase> m_PerformanceTasks;
         private void InitPerformanceTasks()

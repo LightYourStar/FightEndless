@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LD
 {
-    public class LDUIContent<T> where T :LDBaseUI 
+    public class LDUIContent<T> where T :LDBaseUI
     {
         public string PanelName;//ui名字
         public WndUICfg WndUICfg;//ui配置文件

@@ -39,7 +39,7 @@ namespace LD
 #if USE_ADDRESSABLES
             AsyncOperationHandle<IResourceLocator> init = Addressables.InitializeAsync();
             init.WaitForCompletion();
-            ReloadAddressables();
+            ReloadAddressable();
 #endif
         }
 

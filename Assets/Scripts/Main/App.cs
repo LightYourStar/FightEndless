@@ -7,7 +7,7 @@ namespace LD
     {
         public ResMgr gResMgr;
         public GameCtrl gGameCtrl;
-        public LDUiMgr gUiMgr;
+        public LDUIMgr gUiMgr;
         public MsgDispatcher gMsgDispatcher;
         private Global m_Global;
 
@@ -70,12 +70,14 @@ namespace LD
             Global.Log("PreInit ====111");
             yield return new WaitForEndOfFrame();
             gMsgDispatcher = new MsgDispatcher();
-            gUiMgr = new LDUiMgr();
+            gUiMgr = new LDUIMgr();
             gGameCtrl = new GameCtrl();
 
             InitData();
-            Global.gApp.gUiMgr.OpenUIAsync(LDUICfg.LogoUI);
-            Global.gApp.gGameCtrl.ChangeToLoginScene();
+            // Global.gApp.gUiMgr.OpenUIAsync(LDUICfg.LogoUI);
+            Global.gApp.gGameCtrl.TryChangeToMainScene();
+            // Global.gApp.gGameCtrl.ChangeToLoginScene();
+
         }
 
         public void DUpdate(float dt)

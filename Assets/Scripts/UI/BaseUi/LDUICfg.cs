@@ -71,7 +71,6 @@ namespace LD
     {
         public static string CanvasPath = "PrefabsN/UI/Resident/Canvas";
 
-
         public static string LogoUI = "LogoUI";
         public static string LoadingUI = "LoadingUI";
 

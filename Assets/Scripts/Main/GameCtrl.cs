@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 
 namespace LD
@@ -8,7 +10,7 @@ namespace LD
     public partial class GameCtrl
     {
         private FrameCtrl m_FrameCtrl = null;
-        // private LoadingFrameCtrl m_LoadingFrameCtrl = null;
+        private LoadingFrameCtrl m_LoadingFrameCtrl = null;
 
         public float FrameDtTime { get; private set; }
 
@@ -30,6 +32,34 @@ namespace LD
 #else
             SceneManager.LoadScene("LoadingScene");
 #endif
+        }
+
+        IEnumerator OnLoadLoadingScene(string sceneName, int loadingType, Action cb)
+        {
+            yield return new WaitForSeconds(0.05f);
+            if (m_LoadingFrameCtrl == null)
+            {
+                LoadingScene loadingScene = new LoadingScene();
+                m_LoadingFrameCtrl = new LoadingFrameCtrl(loadingScene);
+                m_LoadingFrameCtrl.Init();
+            }
+
+            m_LoadingFrameCtrl.ChangeToLoadingScene(sceneName, loadingType, cb);
+        }
+
+        public void DestroyCurFrame()
+        {
+            Time.timeScale = 1;
+            BaseScene.TimeScale = 1;
+            if (m_FrameCtrl != null)
+            {
+                m_FrameCtrl.OnDestroy();
+                m_FrameCtrl = null;
+            }
+
+            Time.timeScale = 1;
+            Resources.UnloadUnusedAssets();
+            System.GC.Collect();
         }
 
         #region ChangeToLoginScene
@@ -93,21 +123,21 @@ namespace LD
             // }
 
             //#todo
-            // Global.gApp.gUiMgr.OpenUIAsync<LoadingUI>(LDUICfg.LoadingUI).SetLoadedCall(ui =>
-            // {
-            //     ui?.RefreshUI(0, () => { Global.gApp.gGlobal.StartCoroutine(LoadSceneAsync("MainScene", 0, ChangeToMainSceneFormLoading)); });
-            // });
+            Global.gApp.gUiMgr.OpenUIAsync<LoadingUI>(LDUICfg.LoadingUI).SetLoadedCall(ui =>
+            {
+                ui?.RefreshUI(0, () => { Global.gApp.gGlobal.StartCoroutine(LoadSceneAsync("MainScene", 0, ChangeToMainSceneFormLoading)); });
+            });
 
-// #if USE_ADDRESSABLES
-//             AsyncOperationHandle sceneHandle = Addressables.LoadSceneAsync("Scene/LoadingScene.unity");
-//             sceneHandle.Completed += (AsyncOperationHandle obj) =>
-//             {
-//                 Global.gApp.gGlobal.StartCoroutine(OnLoadLoadingScene("MainScene", 0, ChangeToMainSceneFormLoading));
-//
-//             };
-// #else
-//             SceneManager.LoadScene("LoadingScene");
-// #endif
+#if USE_ADDRESSABLES
+            AsyncOperationHandle sceneHandle = Addressables.LoadSceneAsync("Scene/LoadingScene.unity");
+            sceneHandle.Completed += (AsyncOperationHandle obj) =>
+            {
+                Global.gApp.gGlobal.StartCoroutine(OnLoadLoadingScene("MainScene", 0, ChangeToMainSceneFormLoading));
+
+            };
+#else
+            SceneManager.LoadScene("LoadingScene");
+#endif
         }
 
         public void ChangeToMainSceneFormLoading()

@@ -13,8 +13,8 @@
     /// </summary>
     public abstract class PerformanceTaskBase : IPerformanceTask
     {
-        protected readonly LDUiMgr m_UIMgr;
-        protected PerformanceTaskBase(LDUiMgr uiMgr)
+        protected readonly LDUIMgr m_UIMgr;
+        protected PerformanceTaskBase(LDUIMgr uiMgr)
         {
             m_UIMgr = uiMgr;
         }

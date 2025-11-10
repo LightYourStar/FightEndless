@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LD
 {
-    public partial class LDUiMgr
+    public partial class LDUIMgr
     {
         private List<LDBaseUI> m_OpenUIStack; // 当前所有的 打开的ui
         private Transform m_RootTsf;
@@ -15,7 +15,7 @@ namespace LD
         private float m_DelUIPreTime = 0;
 
         private float m_AutoReleaseResTime = 5f;//自动卸载 计时器
-        public LDUiMgr()
+        public LDUIMgr()
         {
             m_OpenUIStack = new List<LDBaseUI>(4);
             // gTimerMgr = new LDTimerMgr();

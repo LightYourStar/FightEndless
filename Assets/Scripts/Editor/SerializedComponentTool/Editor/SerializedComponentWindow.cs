@@ -958,6 +958,11 @@ namespace Cheetah.Common.SerializeTools
             if (mToSetSerializedObjects)
             {
                 mToSetSerializedObjects = false;
+                if (mNameSpaceList[mNameSpaceIndex].Equals(string.Empty))
+                {
+                    Debug.LogWarning($"==== No name space idx: {mNameSpaceIndex} count : {mNameSpaceList.Length}");
+                    return;
+                }
                 SerializeObject(mNameSpaceList[mNameSpaceIndex], mRootComponents);
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
@@ -1120,6 +1125,8 @@ namespace Cheetah.Common.SerializeTools
                     for (int i = 0; i < count; i++)
                     {
                         ObjectComponents ioc = itemComponents[i];
+
+
                         SerializedProperty pObj = so.FindProperty(oc.publicProperty ? "m_" + ioc.name : ioc.name);
                         if (pObj == null)
                         {
@@ -1132,6 +1139,13 @@ namespace Cheetah.Common.SerializeTools
                         for (int j = 0; j < cCount; j++)
                         {
                             ComponentData cd = ioc[j];
+
+                            if (cd.type.type == typeof(UnityEngine.UI.Text))
+                            {
+                                // Debug.Log($"Skip binding Text on {ioc.go.name}");
+                                continue;
+                            }
+
                             //Log.dt(ioc.name, cd.type.codeTypeName + " " + cd.type.variableName);
                             SerializedProperty pComponent = pObj.FindPropertyRelative("m_" + cd.type.variableName);
                             if (pComponent == null)
@@ -1221,7 +1235,7 @@ namespace Cheetah.Common.SerializeTools
                 string code = GetCode(ns, clses[i]);
                 if (!string.IsNullOrEmpty(code))
                 {
-                    codes.Add(new CodeObject(string.Concat(cls.cls, ".gen.cs"), code));
+                    codes.Add(new CodeObject(string.Concat(cls.cls, ".cs"), code));
                 }
             }
             return codes;
@@ -1586,6 +1600,7 @@ namespace Cheetah.Common.SerializeTools
         private void ResetNameSpaceList()
         {
             mUsedNameSpaces.Clear();
+
             string savedNameSpaces = EditorPrefs.GetString(GetKey("saved_namespaces"), null);
             mNameSpaceIndex = EditorPrefs.GetInt(GetKey("saved_namespace_index"), 0);
             if (!string.IsNullOrEmpty(savedNameSpaces))
