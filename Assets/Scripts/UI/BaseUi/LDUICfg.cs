@@ -73,6 +73,7 @@ namespace LD
 
         public static string LogoUI = "LogoUI";
         public static string LoadingUI = "LoadingUI";
+        public static string CommonUI = "CommonUI";
 
 
         // 用于各种表现的UI 各种获得UI  升级  解锁 平级  互斥
@@ -111,10 +112,12 @@ namespace LD
         {
             {LogoUI,new WndUICfg(){ResPath = "PrefabsN/UI/Logo/LogoUi",UnRespondEscape = true}},
             {LoadingUI,new WndUICfg(){ResPath = "PrefabsN/UI/Resident/LoadingUI",AutoOrder = false,ResSceneType = ResSceneType.Resident}},
+            {CommonUI,new WndUICfg(){ResPath = "PrefabsN/UI/Main/CommonUI",NoTouchMask = true,UILevel = 1,AutoOrder = false,OnUICloseListener = new List<string>()}},
         };
 
         static LDUICfg()
         {
+            gUIInfo[CommonUI].OrderInfo[UIOrderInfo.Canvas1] = new UIOrderInfo() { PlaneDistance = 100, OrderInLayer = 30 };
             gUIInfo[LoadingUI].OrderInfo[UIOrderInfo.Canvas1] = new UIOrderInfo() { PlaneDistance = 10, OrderInLayer = 90 };
         }
     }

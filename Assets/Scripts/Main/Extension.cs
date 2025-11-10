@@ -48,6 +48,11 @@ namespace LD
             button.onClick.AddListener(action);
         }
 
+        public static void AddListener(this RectTransform_Button_Image_Container btnContainer, UnityAction action)
+        {
+            btnContainer.button.AddListener(action);
+        }
+
         public static void AddListener(this Toggle toggle, UnityAction<bool> action)
         {
             toggle.onValueChanged.RemoveAllListeners();
